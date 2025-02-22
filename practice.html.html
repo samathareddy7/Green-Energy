@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar & Wind Products</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .buttons {
+            margin: 20px;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px;
+            width: 250px;
+            text-align: center;
+        }
+        .product-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .view-more {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background: blue;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select Product Category</h1>
+    <div class="buttons">
+        <button onclick="showProducts('solar')">Solar Products</button>
+        <button onclick="showProducts('wind')">Wind Products</button>
+    </div>
+    <div class="products" id="product-list"></div>
+
+    <script>
+        const products = {
+            solar: [
+                { name: "HomeHop", price: "$100", discount: "10%", review: "4.5/5", img: "vertical wind.jpg" , link: "#" },
+                { name: "Solar charge controller", price: "$120", discount: "15%", review: "4.7/5", img: "images/solar charge.jpg", link: "#" },
+                { name: "solar water heater", price: "$90", discount: "5%", review: "4.3/5", img: "images/solar water.jpg", link: "#" },
+                { name: "solar street light", price: "$110", discount: "12%", review: "4.6/5", img: "images/solar light.jpg", link: "#" },
+                { name: "Dylect", price: "$130", discount: "18%", review: "4.8/5", img: "images/dylect.jpg", link: "#" },
+                { name: "Hybrid solar power inverter", price: "$300", discount: "11%", review: "5.0/5", img:"images/hybrid power.webp", link: "#" },
+                { name: "Thin film solar panel", price: "$150", discount: "10%", review: "3.8/5", img: "Thin-film-solar-panels.webp", link: "#" },
+                { name: "Lithium ion solar battery", price: "$90", discount: "5%", review: "4.5/5", img: "lithium ion.webp", link: "#" }
+                
+                
+            ],
+            wind: [
+                { name: "Horizontal Wind Turbine", price: "$150", discount: "10%", review: "4.4/5", img: "images/horizontal.jpg", link: "#" },
+                { name: "vertical Wind Turbine", price: "$600", discount: "12%", review: "4.5/5", img: "vertical wind.jpg", link: "#" },
+                { name: "Grid wind turbine", price: "$200", discount: "15%", review: "4.6/5", img: "grid wind.jpg", link: "#" },
+                { name: "commercial wind turbine", price: "$50", discount: "20%", review: "4.7/5", img: "images/commerical.jpg", link: "#" },
+                { name: "Industrial wind Turbine", price: "$120", discount: "8%", review: "4.3/5", img: "images/industrial.jpg", link: "#" },
+                { name: "1200W wind turbine generator", price: "$100", discount: "5%", review: "4.3/5", img: "1200 wind turbine genertaor.jpg", link: "#" },
+                { name: "Archimedes wind turbine", price: "$100", discount: "9%", review: "4.3/5", img: "archimides.webp", link: "#" },
+            
+            ]
+        };
+
+        function showProducts(category) {
+            const productList = document.getElementById("product-list");
+            productList.innerHTML = "";
+            
+            products[category].forEach(product => {
+                const productCard = document.createElement("div");
+                productCard.className = "product-card";
+                productCard.innerHTML = `
+                    <img src="${product.img}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>Price: ${product.price}</p>
+                    <p>Discount: ${product.discount}</p>
+                    <p>Review: ${product.review}</p>
+                    <a href="${product.link}" class="view-more"><a href="contact.html">Buy Now</a></a>
+                `;
+                productList.appendChild(productCard);
+            });
+        }
+    </script>
+</body>
+</html>
